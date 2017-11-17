@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 {% load staticfiles i18n widget_tweaks %}
 
+{% block nav %}
+<nav class="blue-intense" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo white-text">Logo</a>
+    </div>
+</nav>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="col s12 no-padding">
-        <div class="cotn_principal col s12 no-padding">
-            <div class="cont_centrar col s12 no-padding">
+        <div class="cotn_principal_login col s12 no-padding">
+            <div class="cont_centrar_login col s12 no-padding">
                 <div class="col s6 no-padding">
                     <div class="cont_back_info col s12 no-padding">
                         <div class="cont_img_back_grey col s12 no-padding">
@@ -20,7 +28,7 @@
                                 <h4 class="center-align">Iniciar Sesi&oacute;n</h4>
                                 <div class="row">
                                     <form class="col s12">
-                                        <div class="row">
+                                        <div class="row row-padding-top">
                                             <div class="input-field col s12">
                                                 <i class="material-icons prefix">account_circle</i>
                                                 <input id="icon_prefix" type="text" class="validate">
@@ -44,5 +52,11 @@
             </div>
         </div>
     </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="row no-margin">
+    {% include "landing_footer.html" %}
 </div>
 {% endblock %}

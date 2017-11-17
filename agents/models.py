@@ -23,6 +23,8 @@ class Agent(TimeStampedModel):
         ('M', 'Masculino'),
     )
     sex = models.CharField(max_length=1, choices=SEX)
+    email = models.EmailField(default='')
+    phone_number = models.CharField(max_length=20, default='')
 
     class Meta:
         db_table = 'agent'

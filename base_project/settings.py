@@ -74,20 +74,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'base_project.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "trackcar",
-        "USER": "cheojeg",
-        "PASSWORD": "j9714697",
-        "HOST": "",
-        "PORT": "5432",
+try:
+    #print "Local Settings"
+    from .local_settings import *
+except Exception:
+    # Prod Settings
+    #print "Prod Settings"
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": "trackcar",
+            "USER": "cheojeg",
+            "PASSWORD": "j9714697",
+            "HOST": "",
+            "PORT": "5432",
+        }
     }
-}
+    LOGGING_PATH = '/home/cheojeg/hackaton/base_project/log/info.log'
 
 # LOGGING
 LOGGING = {
@@ -102,7 +105,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': '/home/cheojeg/hackaton/base_project/log/info.log',
+            'filename': LOGGING_PATH,
             'formatter': 'verbose',
         },
     },

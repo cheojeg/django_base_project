@@ -8,7 +8,8 @@ from django.contrib.auth.models import User
 
 class Agent(TimeStampedModel):
 
-    uuid = models.UUIDField(primary_key=True,
+    id = models.AutoField(primary_key=True)
+    uuid = models.UUIDField(db_index=True,
                             default=uuid_lib.uuid4,
                             editable=False)
     user_account_id = models.ForeignKey(User)

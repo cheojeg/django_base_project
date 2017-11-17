@@ -16,11 +16,11 @@ class CodeAdmin(admin.ModelAdmin):
 class MarbeteAdmin(admin.ModelAdmin):
 
     readonly_fields = ['uuid', 'created', 'modified']
-    fields = ['uuid', 'code_id', 'license_plate', 'brand', 'model',
+    fields = ['uuid', 'code', 'license_plate', 'brand', 'model',
               'type_vehicle', 'year_production', 'amount', 'owner',
               'document_description', 'document_type', 'oposition',
               'valid', 'penalized']
-    list_display = ['uuid', 'code_id', 'license_plate', 'brand', 'model',
+    list_display = ['uuid', 'code', 'license_plate', 'brand', 'model',
                     'amount', 'owner', 'document_description', 'document_type',
                     'oposition', 'valid', 'penalized']
     list_filter = ['oposition', 'valid', 'penalized']

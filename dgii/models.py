@@ -8,7 +8,8 @@ from django.contrib.auth.models import User
 
 class Code(TimeStampedModel):
 
-    uuid = models.UUIDField(primary_key=True,
+    id = models.AutoField(primary_key=True)
+    uuid = models.UUIDField(db_index=True,
                             default=uuid_lib.uuid4,
                             editable=False)
     code = models.CharField(max_length=5)
@@ -24,11 +25,12 @@ class Code(TimeStampedModel):
 
 class Marbete(TimeStampedModel):
 
-    uuid = models.UUIDField(primary_key=True,
+    id = models.AutoField(primary_key=True)
+    uuid = models.UUIDField(db_index=True,
                             default=uuid_lib.uuid4,
                             editable=False)
-    code_id = models.ForeignKey(Code)
-    license_plate = models.CharField(max_length=25)
+    code = models.ForeignKey(Code, db_column='code_id', default=None)
+    license_plate = models.CharField(max_length=25, unique=True)
     brand = models.CharField(max_length=150)
     model = models.CharField(max_length=150)
     TYPE_VEHICLE = (

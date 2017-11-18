@@ -4,7 +4,7 @@ from dgii.api import views as api_views
 urlpatterns = [
     # url(r'^$', views.actions_list, name='actions_list'),
     url(
-        regex=r'^dgii_query$',
+        regex=r'^dgii_query/(?P<license_plate>.+)/$',
         view=api_views.ActionListAPIView.as_view(),
         name='dgii_query'
     )

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'agents',
     'dgii',
     'website',
+    'detection',
 ]
 
 MIDDLEWARE = [

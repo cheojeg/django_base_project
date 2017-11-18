@@ -8,6 +8,7 @@ from website import views as websiteviews
 
 urlpatterns = [
 	url(r'^$', websiteviews.index, name='index'),
-    url(r'^login/$', auth_views.login, {'template_name': 'website/login.html'}, name='login'),
-    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
+    url(r'^login/$', websiteviews.login_user, name='login_user'),
+    url(r'^events/$', websiteviews.events, name='events'),
+    url(r'^logout/$', auth_views.logout, {'template_name': 'login.html'}, name='logout'),
 ]

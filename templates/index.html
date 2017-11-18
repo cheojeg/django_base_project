@@ -5,6 +5,9 @@
 <nav class="blue-intense" role="navigation">
     <div class="nav-wrapper container">
         <a id="logo-container" href="#" class="brand-logo white-text">Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="white-text" href="{% url 'login_user' %}">Iniciar Sesi&oacute;n</a></li>
+        </ul>
     </div>
 </nav>
 {% endblock %}
@@ -96,6 +99,6 @@
 
 {% block footer %}
 <div class="row no-margin">
-    {% include "footer.html" %}
+    {% include "landing_footer.html" %}
 </div>
 {% endblock %}

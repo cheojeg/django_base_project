@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n widget_tweaks %}
+
+{% block nav %}
+{% include "nav.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="col s12">
+        <div id="map"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="no-margin row">
+    {% include "footer.html" %}
+</div>
+
+{% endblock %}
+
+
+{% block after_calls%}
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-Fo0mJLvJmBhFsdip5KgTiBUUAnd2KyY&callback=initMap">
+</script>
+
+<script>
+    var detections = JSON.parse('{{detections|safe}}');
+</script>
+
+{% endblock %}

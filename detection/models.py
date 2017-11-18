@@ -16,11 +16,15 @@ class DetectionManager(models.Manager):
         #     detail_url=data['detail_url'])
         try:
             # if fbi_list_id.exists() and not check_fugitive.exists():
+            photo = None
+            if data.get('photo'):
+                photo = data['photo']
             detection = self.create(
                 agent_id=data['agent_id'],
                 marbete_id=data['marbete_id'],
                 latitude=data['latitude'],
-                longitude=data['longitude']
+                longitude=data['longitude'],
+                photo=photo
             )
         except IntegrityError:
             print "Error de integridad BD!!!!"

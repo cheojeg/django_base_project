@@ -27,7 +27,6 @@ class MarbeteAPIView(APIView):
                     isinstance(longitude, float):
                 agent_query = Agent.objects.filter(
                     user_account_id=request.user)
-                marbete = MarbeteSerializer(marbete_query, many=True)
                 detection_data = {}
                 detection_data['agent_id'] = agent_query[0]
                 detection_data['marbete_id'] = marbete_query[0]
@@ -35,6 +34,7 @@ class MarbeteAPIView(APIView):
                 detection_data['longitude'] = longitude
                 detection_data['fined'] = None
                 Detection.objects.create_detection(detection_data)
+                marbete = MarbeteSerializer(marbete_query, many=True)
                 return Response({'data': marbete.data[0], 'status': 'OK'})
             elif not latitude or not longitude:
                 msg = {'status': 'BAD REQUEST'}

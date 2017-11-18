@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n widget_tweaks %}
+
+{% block nav %}
+{% include "nav.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col s12 no-padding">
+        <div class="cotn_principal col s12 no-padding">
+            <div class="cont_centrar col s12 no-padding">
+                <div class="cont_info col s12 no-padding">
+                    <div class="card col s12 no-padding">
+                        <div class="white card-content col s12 no-padding">
+                            <div class="col s12">
+                                <i class="medium material-icons left">format_list_bulleted</i>
+                                <h4 class="left">Lista de Eventos</h4>
+                            </div>
+                        </div>
+                        <div class="card-action col s12 no-padding">
+                            <form class="col s12 row-padding-top">
+                                <table class="bordered highlight responsive-table col s12 row-padding-top">
+                                    <thead>
+                                        <tr>
+                                        <th>Name</th>
+                                        <th>Item Name</th>
+                                        <th>Item Price</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Alvin</td>
+                                            <td>Eclair</td>
+                                            <td>$0.87</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Alan</td>
+                                            <td>Jellybean</td>
+                                            <td>$3.76</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jonathan</td>
+                                            <td>Lollipop</td>
+                                            <td>$7.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="no-margin row">
+    {% include "footer.html" %}
+</div>
+{% endblock %}

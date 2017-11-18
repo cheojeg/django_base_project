@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n widget_tweaks %}
+
+{% block nav %}
+{% include "nav.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col s12 no-padding">
+        <div class="cotn_principal col s12 no-padding">
+            <div class="cont_centrar col s12 no-padding">
+                <div class="cont_info col s12 no-padding">
+                    <div class="card col s12 no-padding">
+                        <div class="white card-content col s12 no-padding">
+                            <div class="col s12">
+                                <i class="medium material-icons left">account_box</i>
+                                <h4 class="left">Registro de Usuario</h4>
+                            </div>
+                        </div>
+                        <div class="card-action col s12 no-padding">
+                            <form class="col s12">
+                                <div class="row col s12 no-margin row-padding-top">
+                                    <div class="input-field col s3">
+                                        <input id="first_name" type="text" class="validate">
+                                        <label for="first_name">First Name</label>
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <input id="last_name" type="text" class="validate">
+                                        <label for="last_name">Last Name</label>
+                                    </div>
+                                </div>
+                                <div class="row col s12 no-margin row-padding-top">
+                                    <div class="input-field col s3">
+                                        <input id="password" type="password" class="validate">
+                                        <label for="password">Password</label>
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <input id="email" type="email" class="validate">
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+                                <div class="row col s12">
+                                    <a class="btn-margin waves-effect waves-light btn right red">Cancelar</a>
+                                    <a class="btn-margin waves-effect waves-light btn right">Aceptar</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="row no-margin">
+    {% include "footer.html" %}
+</div>
+{% endblock %}

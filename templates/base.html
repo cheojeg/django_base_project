@@ -1,0 +1,53 @@
+{% load staticfiles static %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Sistema Automatizado de Detecci&oacute;n de Matr&iacute;culas en Regla</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- CSS  -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{% static 'css/style2.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    </head>
+    <body>
+        {% block nav %}
+        {% endblock %}
+
+        <div class="row">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="col s12">
+                        <div class="col s12">
+                            <div class="alert alert-dismissable {{ message.tags }}">
+                                {% if message.tags == "alert-danger" %} <i class="material-icons">close</i> {% endif %}
+                                {% if message.tags == "alert-success" %} <i class="material-icons">check</i> {% endif %}
+                                {% if message.tags == "alert-info" %} <i class="material-icons">info</i> {% endif %}
+                                {% if message.tags == "alert-warning" %} <i class="material-icons">warning</i> {% endif %}
+                                <button id="dismiss-cookie-alert" title="Cerrar" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                {{ message }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        {% block footer %}
+        {% endblock %}
+
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/init.js' %}"></script>
+    </body>
+</html>

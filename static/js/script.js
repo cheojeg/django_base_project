@@ -8,18 +8,28 @@ $(document).ready(function() {
 	});
 });
 
-function setPointOnMap(lat,lng){
+function setPointOnMap(lat,lng, infowindow){
     console.log(lat, lng);
     var latlng = {lat:lat, lng:lng}
     var marker = new google.maps.Marker({
         position: latlng,
         map: map
     });
+    marker.addListener('click', function() {
+        infowindow.open(map, marker);
+    });
 }
 
 function renderPoints(dic){
     $.each(dic, function(i,point){
-        setPointOnMap(point['fields']['latitude'], point['fields']['longitude'])
+        var contentString = '<span>'+
+                            point['fields']['marbete_id']+
+                            '</span>'
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        setPointOnMap(point['fields']['latitude'], point['fields']['longitude'], infowindow)
     });
 }
 

@@ -4,7 +4,9 @@
 {% block nav %}
 <nav class="blue-intense" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo white-text">Logo</a>
+        <a id="logo-container" href="#" class="brand-logo white-text">
+            <img src="{% static 'images/full_logo_white.png' %}">
+        </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a class="white-text" href="{% url 'login_user' %}">Iniciar Sesi&oacute;n</a></li>
         </ul>
@@ -16,12 +18,12 @@
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">
             <div class="container">
-                <br><br>
-                <h1 class="header center white-text text-lighten-2">Sistema Automatizado de Detección de Matrículas en Regla</h1>
-                <div class="row center">
-                    <h5 class="header col s12 light">Detección automatizada de vehículos con marbete vencido</h5>
+                <div class="row row-padding-top">
+                    <h2 class="header center white-text text-lighten-2 row-padding-top">Sistema Automatizado de Detecci&oacute;n de Matr&iacute;culas</h2>
+                    <div class="row center row-padding-top">
+                        <h5 class="header col s12 light">Detecci&oacute;n automatizada de veh&iacute;culos con marbete vencido</h5>
+                    </div>
                 </div>
-                <br><br>
             </div>
         </div>
         <div class="parallax"><img src="{% static 'images/image12.jpg' %}" alt="Unsplashed background img 1"></div>
@@ -29,33 +31,16 @@
 
     <div class="container">
         <div class="section">
-            <!--   Icon Section   -->
             <div class="row">
-                <div class="col s12 m4">
-                    <div class="icon-block">
-                        <h2 class="center blue-intense-text"><i class="material-icons">local_taxi</i></h2>
-                        <h5 class="center">Objetivo</h5>
-
-                        <p class="light">Proveer una herramienta eficaz que garantice a los organismos responsables, una eficiente gestión tributaria de los impuestos de circulación de vehículos a motor en el territorio nacional.</p>
-                    </div>
+                <div class="col s6 center">
+                    <h2 class="center grey-text darken-1"><i class="material-icons medium">directions_car</i></h2>
+                    <h4>Problematica</h4>
+                    <p class="left-align light">No hay forma sistemática de detectar un vehiculo que circula con marbete vencido. Su detección depende de que una autoridad de tránsito que se percate visualmente y actúe en consecuencia.</p>
                 </div>
-
-                <div class="col s12 m4">
-                    <div class="icon-block">
-                        <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-                        <h5 class="center">User Experience Focused</h5>
-
-                        <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-                    </div>
-                </div>
-
-                <div class="col s12 m4">
-                    <div class="icon-block">
-                        <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-                        <h5 class="center">Easy to work with</h5>
-
-                        <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-                    </div>
+                <div class="col s6 center">
+                    <h2 class="center grey-text darken-1"><i class="material-icons medium">done_all</i></h2>
+                    <h4>Objetivo</h4>
+                    <p class="left-align light">Ofrecer a la Autoridad Metropolitana de Transporte una herramienta tecnol&oacute;gica, ya que como ente responsable de garantizar una efectiva gesti&oacute;n tributar&iacute;a, le permita detectar de forma sistem&aacute;tica, matriculas que presentan retraso en el pago del impuesto de circulaci&oacute;n o marbete. Esto debe realizarse de manera autom&aacute;tica desde dispositivos m&oacute;viles, apoy&aacute;ndose en los diversos sistemas de consulta dispuestos por el gobierno nacional.</p>
                 </div>
             </div>
         </div>
@@ -74,17 +59,39 @@
 
     <div class="container">
         <div class="section">
+            <!--   Icon Section   -->
             <div class="row">
-                <div class="col s12 center">
-                    <h3><i class="mdi-content-send brown-text"></i></h3>
-                    <h4>Contact Us</h4>
-                    <p class="left-align light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center grey-text darken-1"><i class="material-icons medium">assignment_turned_in</i></h2>
+                        <h5 class="center">Preciso</h5>
+
+                        <p class="light">Al detectar una matr&iacute;cula, el sistema garantiza que la informaci&oacute;n tributaria asociada a la misma es la correcta.</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center grey-text darken-1"><i class="material-icons medium">av_timer</i></h2>
+                        <h5 class="center">Eficiente</h5>
+
+                        <p class="light">El agente solo ser&aacute; alertado ante matr&iacute;culas que presentan retraso en el pago del impuesto.</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m4">
+                    <div class="icon-block">
+                        <h2 class="center grey-text darken-1"><i class="material-icons medium">desktop_windows</i></h2>
+                        <h5 class="center">Automatizado</h5>
+
+                        <p class="light">Consulta en tiempo real del estatus de las matr&iacute;culas identificadas a trav&eacute;s de la DGII.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="parallax-container valign-wrapper">
+    <div class="parallax-container valign-wrapper margin-b-minus">
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
@@ -92,7 +99,9 @@
                 </div>
             </div>
         </div>
-        <div class="parallax"><img src="{% static 'images/image1.jpg' %}" alt="Unsplashed background img 3"></div>
+        <div class="parallax">
+            <img src="{% static 'images/image1.jpg' %}" alt="Unsplashed background img 3">
+        </div>
     </div>
 </div>
 {% endblock %}

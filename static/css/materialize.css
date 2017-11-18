@@ -3411,13 +3411,22 @@ nav ul a span.badge {
 
 @media only screen and (min-width: 993px) {
   .container {
-    width: 70%;
+    width: 85%;
   }
 }
 
 .container .row {
   margin-left: -0.75rem;
   margin-right: -0.75rem;
+}
+
+#logo-container {
+  height: 100px;
+}
+
+#logo-container > img {
+  height: 100px;
+  padding: 5px 0px;
 }
 
 .section {
@@ -5491,7 +5500,7 @@ button.btn-floating {
 }
 
 .dropdown-content li:hover, .dropdown-content li.active, .dropdown-content li.selected {
-  background-color: #eee;
+  background-color: #f5f5f5 !important;
 }
 
 .dropdown-content li.active.selected {

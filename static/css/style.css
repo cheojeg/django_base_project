@@ -28,6 +28,14 @@ p {
     line-height: 2rem;
 }
 
+.ul-options {
+    margin-top: 100px;
+}
+
+.waves-effect {
+    z-index: unset !important;
+}
+
 .button-collapse {
     color: #26a69a;
 }
@@ -152,14 +160,6 @@ footer.page-footer {
     box-shadow: 1px 10px 30px -10px rgba(0,0,0,0.5);
 }
 
-#alert_box {
-    margin-bottom: -20px;
-}
-
-.center-align {
-    text-align: center;
-}
-
 .cont_img_back_grey {
     top: 50px;
     left: -116px;
@@ -178,8 +178,11 @@ footer.page-footer {
     height: 400px !important;
 }
 
+#alert_close {
+    opacity: 0.4;
+}
+
 .cont_info_log_sign_up {
-    z-index: 1;
     height: 100%;
     position: relative;
     overflow: hidden;
@@ -213,6 +216,36 @@ background text
     border-radius:3px ;
     padding: 15px 0px;
     margin: 20px 0px;
+}
+
+.margin-b-minus {
+    margin-bottom: -40px;
+}
+
+.center-align {
+    text-align: center;
+}
+
+.footer-login > div > footer{
+    position: fixed !important;
+}
+
+nav {
+    height: 100px !important;
+}
+
+#nav-mobile, 
+#nav-mobile > li {
+    height: 100% !important;
+}
+
+#nav-mobile > li > a{
+    height: 100% !important;
+    padding: 20px;
+}
+
+.left-align {
+    text-align: left;
 }
 
 @-webkit-keyframes animar_fondo {

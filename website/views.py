@@ -50,5 +50,11 @@ def login_user(request):
 	return render(request, 'website/login.html', {'form': form})
 
 
+@csrf_protect
 def events(request):
 	return render(request, 'website/events.html', {})
+
+
+def logout_user(request):
+	logout(request)
+	return HttpResponseRedirect(reverse('login_user'))

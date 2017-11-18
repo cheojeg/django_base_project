@@ -4,7 +4,9 @@
 {% block nav %}
 <nav class="blue-intense" role="navigation">
     <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo white-text">Logo</a>
+        <a id="logo-container" href="#" class="brand-logo white-text">
+            <img src="{% static 'images/full_logo_white.png' %}">
+        </a>
     </div>
 </nav>
 {% endblock %}
@@ -57,7 +59,7 @@
 {% endblock %}
 
 {% block footer %}
-<div class="row no-margin">
-    {% include "landing_footer.html" %}
+<div class="row no-margin footer-login">
+    {% include "footer.html" %}
 </div>
 {% endblock %}

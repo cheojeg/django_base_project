@@ -15,18 +15,20 @@
         <!-- CSS  -->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{% static 'css/jquery-ui.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{% static 'css/jquery.dataTables.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
     </head>
     <body>
         {% block nav %}
         {% endblock %}
 
-        <div class="row">
+        <div class="row no-margin">
             {% if messages %}
                 {% for message in messages %}
-                    <div class="col s12">
-                        <div class="col s12">
-                            <div class="row" id="alert_box">
+                    <div class="container">
+                        <div class="col s12 no-padding">
+                            <div class="row margin-b-minus" id="alert_box">
                                 <div class="col s12 m12">
                                 {% if message.tags == "alert-danger" %}
                                     <div class="card red darken-1">
@@ -101,6 +103,9 @@
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/init.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.mask.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
     </body>
 </html>

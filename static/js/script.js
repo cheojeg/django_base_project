@@ -4,4 +4,12 @@ $(document).ready(function() {
 		$( "#alert_box" ).fadeOut( "slow", function() {
 		});
 	});
+
+	$('#table-events').DataTable( {
+		select: true
+	} );
+
+    $('select').material_select();
+    $('#id_birthdate').datepicker();
+    $('#id_phone_number').mask('000-0000000');
 });

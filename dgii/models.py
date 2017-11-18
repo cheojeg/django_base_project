@@ -2,8 +2,10 @@
 from __future__ import unicode_literals
 import uuid as uuid_lib
 from django.db import models
+from django.dispatch import receiver
 from core.models import TimeStampedModel
 from django.contrib.auth.models import User
+from django.db.models import signals
 
 
 class Code(TimeStampedModel):
@@ -60,3 +62,10 @@ class Marbete(TimeStampedModel):
 
     def __str__(self):
         return self.license_plate
+
+
+# This receiver handles token creation immediately a new user is created.
+@receiver(signals.post_save, sender=User)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)

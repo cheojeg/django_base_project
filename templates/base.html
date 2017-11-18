@@ -26,13 +26,65 @@
                 {% for message in messages %}
                     <div class="col s12">
                         <div class="col s12">
-                            <div class="alert alert-dismissable {{ message.tags }}">
-                                {% if message.tags == "alert-danger" %} <i class="material-icons">close</i> {% endif %}
-                                {% if message.tags == "alert-success" %} <i class="material-icons">check</i> {% endif %}
-                                {% if message.tags == "alert-info" %} <i class="material-icons">info</i> {% endif %}
-                                {% if message.tags == "alert-warning" %} <i class="material-icons">warning</i> {% endif %}
-                                <button id="dismiss-cookie-alert" title="Cerrar" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                {{ message }}
+                            <div class="row" id="alert_box">
+                                <div class="col s12 m12">
+                                {% if message.tags == "alert-danger" %}
+                                    <div class="card red darken-1">
+                                        <div class="row no-margin">
+                                            <div class="col s12 m10">
+                                                <div class="card-content padding-message white-text left">
+                                                    <i class="material-icons left">close</i>{{ message }}
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m2">
+                                                <i class="material-icons icon_style" id="alert_close" aria-hidden="true">close</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if message.tags == "alert-success" %}
+                                    <div class="card teal darken-1">
+                                        <div class="row no-margin">
+                                            <div class="col s12 m10">
+                                                <div class="card-content padding-message white-text left">
+                                                    <i class="material-icons left">check</i>{{ message }}
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m2">
+                                                <i class="material-icons icon_style" id="alert_close" aria-hidden="true">close</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if message.tags == "alert-info" %}
+                                    <div class="card blue darken-1">
+                                        <div class="row no-margin">
+                                            <div class="col s12 m10">
+                                                <div class="card-content padding-message white-text left">
+                                                    <i class="material-icons left">info</i>{{ message }}
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m2">
+                                                <i class="material-icons icon_style" id="alert_close" aria-hidden="true">close</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if message.tags == "alert-warning" %}
+                                    <div class="card amber darken-1">
+                                        <div class="row no-margin">
+                                            <div class="col s12 m10">
+                                                <div class="card-content padding-message white-text left">
+                                                    <i class="material-icons left">warning</i>{{ message }}
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m2">
+                                                <i class="material-icons icon_style" id="alert_close" aria-hidden="true">close</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -49,5 +101,6 @@
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/init.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
     </body>
 </html>

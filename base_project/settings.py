@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'base_project.wsgi.application'
 
 try:
     #print "Local Settings"
-    from .local_settings import *
+	from .local_settings import *
 except Exception:
     # Prod Settings
     #print "Prod Settings"

@@ -285,7 +285,10 @@ background text
 
 #map{
     height: 400px;
-    width: 100%;
     position:relative;
-    top:20px;
+    left:20px;
+}
+
+.selector-wrapper{
+
 }

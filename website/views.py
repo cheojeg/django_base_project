@@ -20,6 +20,7 @@ from django.conf import settings
 from django.core.exceptions import PermissionDenied
 from django.core import serializers
 from detection.models import Detection
+from agents.models import Agent
 
 from .forms import UserForm
 
@@ -57,7 +58,12 @@ def events(request):
 	return render(request, 'website/events.html', {})
 
 
-def map(request):
-	detections = Detection.objects.all()
-	detections_json = serializers.serialize("json", detections)
-	return render(request, 'website/map.html', {'detections': detections_json})
+def map(request, agent_id = False):
+    if agent_id:
+        detections = Detection.objects.filter(agent_id = agent_id)
+    else:
+        detections = Detection.objects.all()
+    detections_json = serializers.serialize("json", detections)
+    agents = Agent.objects.all()
+    print agent_id
+    return render(request, 'website/map.html', {'detections': detections_json, 'agents':agents, 'current_agent':agent_id})

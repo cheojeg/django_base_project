@@ -6,6 +6,12 @@ $(document).ready(function() {
 		$( "#alert_box" ).fadeOut( "slow", function() {
 		});
 	});
+
+	$('#agent_select').change(function(){
+	    url = $('#agent_select option:selected').data('url')
+	    console.log(url, "_self");
+	    location.href = url;
+	})
 });
 
 function setPointOnMap(lat,lng, infowindow){
@@ -23,7 +29,7 @@ function setPointOnMap(lat,lng, infowindow){
 function renderPoints(dic){
     $.each(dic, function(i,point){
         var contentString = '<span>'+
-                            point['fields']['marbete_id']+
+                            point['fields']['fined']+
                             '</span>'
         var infowindow = new google.maps.InfoWindow({
           content: contentString

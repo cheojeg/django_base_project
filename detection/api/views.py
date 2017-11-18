@@ -47,6 +47,11 @@ class DectectionAPIView(APIView):
                 detection = detection_query[0]
                 detection.photo = photo
                 detection.fined = True
+                marbete_query = Marbete.objects.filter(
+                    uuid=detection.marbete_id.uuid)
+                marbete = marbete_query[0]
+                marbete.penalized = True
+                marbete.save()
                 detection.save()
                 detection = DetectionSerializer(detection_query, many=True)
                 return Response({'data': detection.data[0], 'status': 'OK'})

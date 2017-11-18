@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import simplejson as json
 
 from django.shortcuts import render, render_to_response
 from django.urls import reverse
@@ -17,6 +18,8 @@ from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
+from django.core import serializers
+from detection.models import Detection
 
 from .forms import UserForm
 
@@ -52,3 +55,9 @@ def login_user(request):
 
 def events(request):
 	return render(request, 'website/events.html', {})
+
+
+def map(request):
+	detections = Detection.objects.all()
+	detections_json = serializers.serialize("json", detections)
+	return render(request, 'website/map.html', {'detections': detections_json})

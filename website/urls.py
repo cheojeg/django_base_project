@@ -10,5 +10,6 @@ urlpatterns = [
 	url(r'^$', websiteviews.index, name='index'),
     url(r'^login/$', websiteviews.login_user, name='login_user'),
     url(r'^events/$', websiteviews.events, name='events'),
+    url(r'^map/$', websiteviews.map, name='map'),
     url(r'^logout/$', auth_views.logout, {'template_name': 'login.html'}, name='logout'),
 ]

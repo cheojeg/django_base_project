@@ -97,10 +97,14 @@
 
         {% block footer %}
         {% endblock %}
-
+        {% block pre_calls%}
+        {% endblock %}
         <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/init.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+        {% block after_calls%}
+        {% endblock %}
     </body>
 </html>

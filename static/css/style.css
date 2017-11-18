@@ -282,3 +282,10 @@ background text
         transform: scale(1.5); 
     }
 }
+
+#map{
+    height: 400px;
+    width: 100%;
+    position:relative;
+    top:20px;
+}

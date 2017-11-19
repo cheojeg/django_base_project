@@ -161,7 +161,8 @@ footer.page-footer {
     overflow: hidden;
     background-color: #fff;
     margin-top: 80px;
-    box-shadow: 1px 10px 30px -10px rgba(0,0,0,0.5);
+    box-shadow: 1px 10px 30px -1px rgba(0, 0, 0, 0.5);
+    border: 1px solid #e0e0e0;
 }
 
 .cont_img_back_grey {
@@ -186,13 +187,34 @@ footer.page-footer {
     opacity: 0.4;
 }
 
+.btn-photo,
+.btn-photo > img {
+    width: 120px !important;
+    height: 120px !important;
+}
+
+.btn-photo > img {
+    z-index: 0 !important;
+}
+
 .cont_info_log_sign_up {
     height: 100%;
     position: relative;
     overflow: hidden;
     background-color: #fff;
     margin-top: 80px;
-    box-shadow: 1px 10px 30px -10px rgba(0,0,0,0.5);
+    box-shadow: 1px 10px 30px -1px rgba(0, 0, 0, 0.5);
+    border: 1px solid #e0e0e0;
+}
+
+.card-content {
+    border-left: 5px solid #247BA0;
+    border-right: 5px solid #247BA0;
+}
+
+.card {
+    box-shadow: 1px 10px 30px -1px rgba(0, 0, 0, 0.5);
+    border: 1px solid #e0e0e0;
 }
 
 .col_md_sign_up {

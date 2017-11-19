@@ -43,6 +43,7 @@ class Marbete(TimeStampedModel):
         ('Motocicleta', 'Motocicleta')
     )
     type_vehicle = models.CharField(max_length=150, choices=TYPE_VEHICLE)
+    color = models.CharField(max_length=100, default='')
     year_production = models.CharField(max_length=5)
     amount = models.FloatField(default=1500)
     owner = models.CharField(max_length=150)

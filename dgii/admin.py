@@ -17,10 +17,10 @@ class MarbeteAdmin(admin.ModelAdmin):
 
     readonly_fields = ['uuid', 'created', 'modified']
     fields = ['uuid', 'code', 'license_plate', 'brand', 'model',
-              'type_vehicle', 'year_production', 'amount', 'owner',
+              'type_vehicle', 'year_production', 'color', 'amount', 'owner',
               'document_description', 'document_type', 'oposition',
               'valid', 'penalized']
-    list_display = ['uuid', 'code', 'license_plate', 'brand', 'model',
+    list_display = ['uuid', 'code', 'license_plate', 'brand', 'model', 'color',
                     'amount', 'owner', 'document_description', 'document_type',
                     'oposition', 'valid', 'penalized']
     list_filter = ['oposition', 'valid', 'penalized']

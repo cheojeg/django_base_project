@@ -8,8 +8,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 	url(r'^', include('website.urls')),
 	url(r'^', include('agents.urls')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')), 
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/v1/', include('dgii.urls')),
+    url(r'^api/v1/', include('detection.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

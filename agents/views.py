@@ -28,11 +28,11 @@ from django.contrib.auth.models import User
 def profile_agent(request):
 	try:
 		profile_user = User.objects.create_user(
-			username=request.POST['username'], 
+			username=request.POST['username'],
 			first_name=request.POST['first_name'],
 			last_name=request.POST['last_name'],
-			email=request.POST['email'], 
-			password=request.POST['password'], 
+			email=request.POST['email'],
+			password=request.POST['password'],
 			is_superuser=False, is_active=True)
 		if not profile_user:
 			return False
@@ -56,13 +56,14 @@ def register_agent(request):
 			user = profile_agent(request)
 
 			if user is not None:
-				form.instance.user_id = user.id
+				form.instance.user_account_id_id = user.id
 				try:
 					form.save()
 					messages.success(request, 'Usuario creado con éxito')
+					return HttpResponseRedirect(reverse('detection_list'))
 				except Exception as err:
 					print err
 					messages.error(request, 'Error, intente de nuevo')
 
-	return render(request, 'agents/register.html', 
+	return render(request, 'agents/register.html',
 		{'form': form, 'form_user' : form_user})

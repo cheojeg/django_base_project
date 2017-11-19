@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+import simplejson as json
 
 from django.shortcuts import render, render_to_response
 from django.urls import reverse
@@ -17,6 +18,9 @@ from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
+from django.core import serializers
+from detection.models import Detection
+from agents.models import Agent
 
 from .forms import UserForm
 
@@ -55,6 +59,18 @@ def events(request):
 	return render(request, 'website/events.html', {})
 
 
+<<<<<<< HEAD
 def logout_user(request):
 	logout(request)
 	return HttpResponseRedirect(reverse('login_user'))
+=======
+def map(request, agent_id = False):
+    if agent_id:
+        detections = Detection.objects.filter(agent_id = agent_id)
+    else:
+        detections = Detection.objects.all()
+    detections_json = serializers.serialize("json", detections)
+    agents = Agent.objects.all()
+    print agent_id
+    return render(request, 'website/map.html', {'detections': detections_json, 'agents':agents, 'current_agent':agent_id})
+>>>>>>> 702fff08f649d9d00872cc946836cb113362f218

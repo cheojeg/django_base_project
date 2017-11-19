@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n widget_tweaks %}
+
+{% block nav %}
+{% include "nav.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid" style="margin-top:40px;">
+    <div class="col s8">
+        <div id="map" class="col s12"></div>
+    </div>
+    <div class="col s4">
+        <div class="selector-wrapper col s11">
+            <h5 class="col s4"> Agente: </h5>
+            <select class="col s8" id="agent_select" style="display:block;">
+                <option> Filtre por agente </option>
+                {% for agent in agents %}
+                <option value="{{agent.id}}" data-url="{% url 'map' agent.id %}"
+                        {% if agent.id == current_agent %} selected {% endif %}>
+                    {{agent.first_name}} {{agent.last_name}}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="no-margin row">
+    {% include "footer.html" %}
+</div>
+
+{% endblock %}
+
+
+{% block after_calls%}
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-Fo0mJLvJmBhFsdip5KgTiBUUAnd2KyY&callback=initMap">
+</script>
+
+<script>
+    $("#agent_select option[value='"+{{current_agent}}+"']").prop('selected', true);
+    var detections = JSON.parse('{{detections|safe}}');
+</script>
+
+{% endblock %}

@@ -315,3 +315,13 @@ nav {
         transform: scale(1.5); 
     }
 }
+
+#map{
+    height: 400px;
+    position:relative;
+    left:20px;
+}
+
+.selector-wrapper{
+
+}

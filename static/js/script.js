@@ -26,11 +26,24 @@ function setPointOnMap(lat,lng, infowindow){
     });
 }
 
+function fined_icon(fined){
+    if(fined == true){
+        return '<span>Multado: <i class="material-icons" style="color: green;">check</i></span>'
+    }
+    else{
+        return '<span>Multado: <i class="material-icons" style="color: red;">clear</i></span>'
+    }
+}
+
 function renderPoints(dic){
     $.each(dic, function(i,point){
-        var contentString = '<span>'+
-                            point['fields']['fined']+
-                            '</span>'
+        var fined = fined_icon(point['fields']['fined'])
+        var matricula = '<br /><span>' + point['fields']['marbete_id'] + '</span>'
+        // Todo: Please, change that split in the created variable in the future (look down)
+        var created = '<br /><span>' + point['fields']['created'].split('T')[0] + '</span>'
+        var contentString = fined +
+                            matricula +
+                            created;
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });

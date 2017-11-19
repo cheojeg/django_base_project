@@ -23,4 +23,4 @@ class MarbeteSerializer(serializers.ModelSerializer):
         fields = ('uuid', 'code', 'license_plate', 'brand', 'model',
                   'type_vehicle', 'year_production', 'amount', 'owner',
                   'document_description', 'document_type', 'oposition',
-                  'valid', 'penalized', 'created', 'modified')
+                  'valid', 'color', 'penalized', 'created', 'modified')

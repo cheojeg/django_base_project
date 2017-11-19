@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 import simplejson as json
-
+import json as js_parser
 from django.shortcuts import render, render_to_response
 from django.urls import reverse
 from django.conf.urls import url
@@ -60,15 +60,25 @@ def logout_user(request):
 	return HttpResponseRedirect(reverse('login_user'))
 
 
-def map(request, agent_id = False):
-    if agent_id:
-        detections = Detection.objects.filter(agent_id = agent_id)
-    else:
-        detections = Detection.objects.all()
-    detections_json = serializers.serialize("json", detections)
-    agents = Agent.objects.all()
+def map(request, agent_id=False):
+	if agent_id:
+		detections = Detection.objects.filter(agent_id=agent_id)
+	else:
+		detections = Detection.objects.all()
+	detections_json = serializers.serialize("json", detections)
+	mod_dectections = js_parser.loads(detections_json)
+	for d in mod_dectections:
+		detection = Detection.objects.filter(marbete_id=d['fields']['marbete_id'])
+		d['fields']['license_plate'] = detection[0].marbete_id.license_plate
+		d['fields']['owner'] = detection[0].marbete_id.owner
+		d['fields']['time'] = detection[0].created.strftime("%d-%m-%Y %H:%M:%S")
+		d['fields']['agent'] = detection[0].agent_id.first_name + ' ' + detection[0].agent_id.last_name
+		d['fields']['agent_number'] = detection[0].agent_id.agent_number
+		d['fields']['capture_img'] = 'http://10.193.0.97:8000/media/' + str(detection[0].photo)
+	detections_json = js_parser.dumps(mod_dectections, ensure_ascii=False)
+	agents = Agent.objects.all()
 
-    return render(request, 'website/map.html', {'detections': detections_json, 'agents':agents, 'current_agent':agent_id})
+	return render(request, 'website/map.html', {'detections': detections_json, 'agents':agents, 'current_agent':agent_id})
 
 
 @csrf_protect

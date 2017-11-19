@@ -49,12 +49,16 @@
                                         <td>{% if d.marbete_id.penalized %} Sancionado {% else %} No Sancionado {% endif %}</td>
                                         <td>
                                             <a title="Ubicar en el Mapa" class="text-grey darken-4 no-margin" href="{% url 'map' %}">
-                                                <i class="small material-icons left text-grey darken-4">room</i>
+                                                <h2 class="center black-text darken-1">
+                                                    <i class="small material-icons left text-grey darken-4">room</i>
+                                                </h2>
                                             </a>
                                         </td>
                                         <td>
                                             <a target='_blank' title="Ver Foto" class="text-grey darken-4 no-margin" href="http://10.193.0.97:8000/media/{{ d.photo }}">
-                                                <i class="small material-icons left text-grey darken-4">photo</i>
+                                                <h2 class="center black-text darken-1">
+                                                    <i class="small material-icons left text-grey darken-4">photo</i>
+                                                </h2>
                                             </a>
                                         </td>
                                     </tr>

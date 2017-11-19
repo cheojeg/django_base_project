@@ -9,7 +9,8 @@ from website import views as websiteviews
 urlpatterns = [
 	url(r'^$', websiteviews.index, name='index'),
     url(r'^login/$', websiteviews.login_user, name='login_user'),
-    url(r'^events/$', websiteviews.events, name='events'),
-    url(r'^map/(?P<agent_id>.*)$', websiteviews.map, name='map'),
-    url(r'^logout/$', auth_views.logout, {'template_name': 'login.html'}, name='logout'),
+    url(r'^detection-list/$', websiteviews.detection_list, name='detection_list'),
+    url(r'^logout/$', websiteviews.logout_user, name='logout_user'),
+	url(r'^map/$', websiteviews.map, {'agent_id': False}, name='map'),
+	url(r'^map/(?P<agent_id>.*)$', websiteviews.map, name='map'),
 ]

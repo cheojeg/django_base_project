@@ -7,6 +7,15 @@ $(document).ready(function() {
 		});
 	});
 
+
+	$('#table-events').DataTable( {
+		select: true
+	} );
+
+    $('select').material_select();
+    $('#id_birthdate').datepicker();
+    $('#id_phone_number').mask('000-0000000');
+
 	$('#agent_select').change(function(){
 	    url = $('#agent_select option:selected').data('url')
 	    console.log(url, "_self");
@@ -47,5 +56,3 @@ function initMap() {
     });
     renderPoints(detections);
 }
-
-

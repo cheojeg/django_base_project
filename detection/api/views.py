@@ -41,19 +41,27 @@ class DectectionAPIView(APIView):
         try:
             Log.objects.create_log_record('DectectionAPIView', request)
             uuid = self.kwargs['uuid']
-            detection_query = Detection.objects.filter(uuid=uuid)
-            photo = request.data.get('photo')
+            detection_query = Detection.objects.filter(marbete_id__uuid=uuid)
+            photo = request.data.get('upload')
             if detection_query.exists() and uuid and photo:
                 detection = detection_query[0]
-                detection.photo = photo
-                detection.fined = True
+                detection.photo = request.data.get('upload')
+                if request.data.get('fined') == 'false':
+                    detection.fined = False
+                if request.data.get('fined') == 'true':
+                    detection.fined = True
+                marbete_query = Marbete.objects.filter(
+                    uuid=detection.marbete_id.uuid)
+                marbete = marbete_query[0]
+                marbete.penalized = True
+                marbete.save()
                 detection.save()
                 detection = DetectionSerializer(detection_query, many=True)
                 return Response({'data': detection.data[0], 'status': 'OK'})
-            elif not latitude or not longitude:
+            else:
                 msg = {'status': 'BAD REQUEST'}
                 return Response(msg, status=status.HTTP_404_NOT_FOUND)
-            else:
+            if not detection_query.exists():
                 msg = {'status': 'NOT FOUND'}
                 return Response(msg, status=status.HTTP_404_NOT_FOUND)
         except Exception:

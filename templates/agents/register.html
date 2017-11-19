@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n widget_tweaks %}
+
+{% block nav %}
+{% include "nav.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container row">
+    <div class="col s12 no-padding row">
+        <div class="cotn_principal col s12 no-padding row">
+            <div class="cont_centrar col s12 no-padding row">
+                <div class="cont_info col s12 no-padding row">
+                    <div class="card col s12 no-padding row">
+                        <div class="white card-content col s12 no-padding">
+                            <div class="col s12">
+                                <i class="medium material-icons left">account_box</i>
+                                <h4 class="left">Registro de Usuario</h4>
+                            </div>
+                        </div>
+                        <div class="card-action col s12 no-padding">
+                            <form class="col s12" method="post" action="{% url 'register_agent' %}" validate>
+                                {% csrf_token %}
+                                <div class="row col s12 no-margin row-padding-top">
+                                    <div class="input-field col s3">
+                                        <label for="id_first_name">{{ form.first_name.label }}</label>
+                                        {% render_field form.first_name class+="col-xs-12 form-control" %}
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <label for="id_middle_name">{{ form.middle_name.label }}</label>
+                                        {% render_field form.middle_name class+="col-xs-12 form-control" %}
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <label for="id_last_name">{{ form.last_name.label }}</label>
+                                        {% render_field form.last_name class+="col-xs-12 form-control" %}
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <label for="id_middle_last_name">{{ form.middle_last_name.label }}</label>
+                                        {% render_field form.middle_last_name class+="col-xs-12 form-control" %}
+                                    </div>
+                                </div>
+                                <div class="row col s12 no-margin row-padding-top">
+                                    <div class="input-field col s3">
+                                        <label for="id_phone_number">{{ form.phone_number.label }}</label>
+                                        {% render_field form.phone_number class+="col-xs-12 form-control" %}
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <label for="id_phone_number">{{ form.birthdate.label }}</label>
+                                        {% render_field form.birthdate class+="col-xs-12 form-control" %}
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <div class="select-wrapper">
+                                            {% render_field form.sex class+="col-xs-12 form-control select-dropdown" %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row col s12 no-margin row-padding-top">
+                                    <div class="input-field col s3">
+                                        <label for="id_agent_number">{{ form.agent_number.label }}</label>
+                                        {% render_field form.agent_number class+="col-xs-12 form-control" %}
+                                    </div>
+                                    <div class="input-field col s4">
+                                        <label for="id_email">{{ form.email.label }}</label>
+                                        {% render_field form.email class+="col-xs-12 form-control" %}
+                                    </div>
+                                </div>
+                                <div class="row col s12 no-margin row-padding-top">
+                                    <div class="input-field col s3">
+                                        <label for="username">{{ form_user.username.label }}</label>
+                                        {% render_field form_user.username class+="col-xs-12 form-control" %}
+                                    </div>
+                                    <div class="input-field col s3">
+                                        <label for="id_password">{{ form_user.password.label }}</label>
+                                        {% render_field form_user.password class+="col-xs-12 form-control" %}
+                                    </div>
+                                </div>
+                                <div class="row col s12">
+                                    <button type="submit" class="btn-margin waves-effect waves-light btn right">Aceptar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="row no-margin">
+    {% include "footer.html" %}
+</div>
+{% endblock %}

@@ -8,9 +8,6 @@ from django.http import HttpResponse
 from .models import User
 
 
-msg_required = 'Este campo es requerido.'
-
-
 class UserForm(forms.ModelForm):
     username = forms.CharField(label=_(unicode('Nombre de Usuario', 'utf8')),
         max_length=150, required=True)

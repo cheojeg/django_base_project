@@ -64,8 +64,8 @@ class Marbete(TimeStampedModel):
         return self.license_plate
 
 
-# This receiver handles token creation immediately a new user is created.
-@receiver(signals.post_save, sender=User)
-def create_auth_token(sender, instance=None, created=False, **kwargs):
-    if created:
-        Token.objects.create(user=instance)
+# # This receiver handles token creation immediately a new user is created.
+# @receiver(signals.post_save, sender=User)
+# def create_auth_token(sender, instance=None, created=False, **kwargs):
+#     if created:
+#         Token.objects.create(user=instance)

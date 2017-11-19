@@ -20,6 +20,7 @@ from django.conf import settings
 from django.core.exceptions import PermissionDenied
 from django.core import serializers
 from detection.models import Detection
+from dgii.models import Marbete
 from agents.models import Agent
 
 from .forms import UserForm
@@ -34,7 +35,7 @@ def index(request):
 def login_user(request):
 	logout(request)
 	if request.user.is_authenticated:
-		return HttpResponseRedirect(reverse('events'))
+		return HttpResponseRedirect(reverse('detection_list'))
 
 	username = password = ''
 	form = UserForm(request.POST or None)
@@ -46,7 +47,7 @@ def login_user(request):
 		user = authenticate(username=username, password=password)
 		if user is not None:
 			login(request, user)
-			return HttpResponseRedirect(reverse('events'))
+			return HttpResponseRedirect(reverse('detection_list'))
 		else:
 			messages.error(request, 'Usuario o contraseña \
 				incorrecta. Verifique.')
@@ -54,8 +55,9 @@ def login_user(request):
 	return render(request, 'website/login.html', {'form': form})
 
 
-def events(request):
-	return render(request, 'website/events.html', {})
+def logout_user(request):
+	logout(request)
+	return HttpResponseRedirect(reverse('login_user'))
 
 
 def map(request, agent_id = False):
@@ -67,3 +69,11 @@ def map(request, agent_id = False):
     agents = Agent.objects.all()
     print agent_id
     return render(request, 'website/map.html', {'detections': detections_json, 'agents':agents, 'current_agent':agent_id})
+
+
+@csrf_protect
+def detection_list(request):
+	detection_list = Detection.objects.all()
+
+	return render(request, 'website/events.html',
+		{'detection_list': detection_list})

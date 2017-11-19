@@ -96,7 +96,7 @@ WSGI_APPLICATION = 'base_project.wsgi.application'
 
 try:
     #print "Local Settings"
-	from .local_settings import *
+    from .local_settings import *
 except Exception:
     # Prod Settings
     #print "Prod Settings"
@@ -205,3 +205,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, './static/')]
 
 LOGIN_REDIRECT_URL = 'home'
+
+DATE_INPUT_FORMATS = ('%d-%m-%Y')

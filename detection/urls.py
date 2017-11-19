@@ -5,7 +5,7 @@ from django.conf.urls import url, include
 
 urlpatterns = [
     url(
-        regex=r'^detection/(?P<uuid>.+)/$',
+        regex=r'^detection/(?P<uuid>.+)$',
         view=api_views.DectectionAPIView.as_view(),
         name='detection'
     ),

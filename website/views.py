@@ -67,7 +67,7 @@ def map(request, agent_id = False):
         detections = Detection.objects.all()
     detections_json = serializers.serialize("json", detections)
     agents = Agent.objects.all()
-    print agent_id
+
     return render(request, 'website/map.html', {'detections': detections_json, 'agents':agents, 'current_agent':agent_id})
 
 

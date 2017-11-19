@@ -7,24 +7,31 @@ $(document).ready(function() {
 		});
 	});
 
-
 	$('#table-events').DataTable( {
 		select: true
 	} );
+  $("#table-events_length").remove();
 
-    $('select').material_select();
-    $('#id_birthdate').datepicker();
-    $('#id_phone_number').mask('000-0000000');
+  $('#id_sex').material_select();
+  $('#id_phone_number').mask('000-0000000');
 
 	$('#agent_select').change(function(){
 	    url = $('#agent_select option:selected').data('url')
 	    console.log(url, "_self");
 	    location.href = url;
-	})
+	});
+
+  $('#id_birthdate').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year,
+    today: 'Hoy',
+    clear: 'Limpiar',
+    close: 'Aceptar',
+    closeOnSelect: false // Close upon selecting a date,
+  });
 });
 
 function setPointOnMap(lat,lng, infowindow){
-    console.log(lat, lng);
     var latlng = {lat:lat, lng:lng}
     var marker = new google.maps.Marker({
         position: latlng,

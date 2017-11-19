@@ -37,7 +37,6 @@ def profile_agent(request):
 		if not profile_user:
 			return False
 	except Exception as err:
-		print err
 		return False
 
 	return profile_user
@@ -62,7 +61,6 @@ def register_agent(request):
 					messages.success(request, 'Usuario creado con éxito')
 					return HttpResponseRedirect(reverse('detection_list'))
 				except Exception as err:
-					print err
 					messages.error(request, 'Error, intente de nuevo')
 
 	return render(request, 'agents/register.html',

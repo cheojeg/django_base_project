@@ -17,7 +17,11 @@ nav .brand-logo {
     top: 10px;
     font-size: 20px;
     color: white;
-    cursor:pointer; 
+    cursor:pointer;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    margin-left: 0px !important;
 }
 
 .padding-message {
@@ -150,7 +154,7 @@ footer.page-footer {
     margin-top: 50px;
 }
 
-.cont_back_info {  
+.cont_back_info {
     position: relative;
     float: left;
     height: 100%;
@@ -168,7 +172,7 @@ footer.page-footer {
 
 .cont_img_back_grey > img {
     width: 100%;
-    -webkit-filter: grayscale(50%);     
+    -webkit-filter: grayscale(50%);
     filter: grayscale(50%);
     animation-duration: 20s;
     animation-timing-function: linear;
@@ -189,12 +193,12 @@ footer.page-footer {
     background-color: #fff;
     margin-top: 80px;
     box-shadow: 1px 10px 30px -10px rgba(0,0,0,0.5);
-} 
+}
 
 .col_md_sign_up {
     position: relative;
     float: left;
-    width: 50%;  
+    width: 50%;
 }
 
 .cont_ba_opcitiy > h2 {
@@ -208,7 +212,7 @@ footer.page-footer {
     color: #fff;
 }
 /* ----------------------------------
-background text    
+background text
 ------------------------------------
 */
 .cont_ba_opcitiy {
@@ -234,7 +238,7 @@ nav {
     height: 100px !important;
 }
 
-#nav-mobile, 
+#nav-mobile,
 #nav-mobile > li {
     height: 100% !important;
 }
@@ -249,70 +253,70 @@ nav {
 }
 
 @-webkit-keyframes animar_fondo {
-    from { 
+    from {
         -webkit-transform: scale(1) translate(0px);
         -moz-transform: scale(1) translate(0px);
         -ms-transform: scale(1) translate(0px);
         -o-transform: scale(1) translate(0px);
-        transform: scale(1) translate(0px); 
+        transform: scale(1) translate(0px);
     }
-    to { 
+    to {
         -webkit-transform: scale(1.5) translate(50px);
         -moz-transform: scale(1.5) translate(50px);
         -ms-transform: scale(1.5) translate(50px);
         -o-transform: scale(1.5) translate(50px);
-        transform: scale(1.5) translate(50px); 
+        transform: scale(1.5) translate(50px);
     }
 }
 
 @-o-keyframes identifier {
-    from { 
+    from {
         -webkit-transform: scale(1);
         -moz-transform: scale(1);
         -ms-transform: scale(1);
         -o-transform: scale(1);
-        transform: scale(1); 
+        transform: scale(1);
     }
-    to { 
+    to {
         -webkit-transform: scale(1.5);
         -moz-transform: scale(1.5);
         -ms-transform: scale(1.5);
         -o-transform: scale(1.5);
-        transform: scale(1.5); 
+        transform: scale(1.5);
     }
 }
 
 @-moz-keyframes identifier {
-    from { 
+    from {
         -webkit-transform: scale(1);
         -moz-transform: scale(1);
         -ms-transform: scale(1);
         -o-transform: scale(1);
-        transform: scale(1); 
+        transform: scale(1);
     }
-    to { 
+    to {
         -webkit-transform: scale(1.5);
         -moz-transform: scale(1.5);
         -ms-transform: scale(1.5);
         -o-transform: scale(1.5);
-        transform: scale(1.5); 
+        transform: scale(1.5);
     }
 }
 
 @keyframes identifier {
-    from { 
+    from {
         -webkit-transform: scale(1);
         -moz-transform: scale(1);
         -ms-transform: scale(1);
         -o-transform: scale(1);
-        transform: scale(1); 
+        transform: scale(1);
     }
-    to { 
+    to {
         -webkit-transform: scale(1.5);
         -moz-transform: scale(1.5);
         -ms-transform: scale(1.5);
         -o-transform: scale(1.5);
-        transform: scale(1.5); 
+        transform: scale(1.5);
     }
 }
 

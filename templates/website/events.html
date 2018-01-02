@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load staticfiles i18n widget_tweaks %}
+
+{% block nav %}
+    {% include "nav.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="col s12 no-padding row">
+        <div class="cotn_principal col s12 no-padding row">
+            <div class="cont_centrar col s12 no-padding row">
+                <div class="cont_info col s12 no-padding row">
+                    <div class="card col s12 no-padding">
+                        <div class="white card-content col s12 no-padding">
+                            <div class="col s12">
+                                <i class="medium material-icons left">format_list_bulleted</i>
+                                <h4 class="left">Lista de Detecciones</h4>
+                            </div>
+                        </div>
+                        <div class="card-action col s12 no-padding">
+                            <table id="table-events" class="bordered highlight responsive-table col s12 row-padding-top">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre del Agente</th>
+                                        <th>Fecha</th>
+                                        <th>Matr&iacute;cula</th>
+                                        <th>Propietario</th>
+                                        <th>Modelo</th>
+                                        <th>Marca</th>
+                                        <th>A&ntilde;o</th>
+                                        <th>Estado</th>
+                                        <th>Sancionado</th>
+                                        <th>Lugar</th>
+                                        <th>Imagen</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for d in detection_list %}
+                                    <tr>
+                                        <td>{{ d.agent_id.first_name }} {{ d.agent_id.last_name }}</td>
+                                        <td>{{ d.marbete_id.modified }}</td>
+                                        <td>{{ d.marbete_id.license_plate }}</td>
+                                        <td>{{ d.marbete_id.owner }}</td>
+                                        <td>{{ d.marbete_id.model }}</td>
+                                        <td>{{ d.marbete_id.brand }}</td>
+                                        <td>{{ d.marbete_id.year_production }}</td>
+                                        <td>{% if d.marbete_id.valid %} Valido {% else %} Vencido {% endif %}</td>
+                                        <td>{% if d.marbete_id.penalized %} Sancionado {% else %} No Sancionado {% endif %}</td>
+                                        <td>
+                                            <a title="Ubicar en el Mapa" class="text-grey darken-4 no-margin" href="{% url 'map' %}">
+                                                <h2 class="center black-text darken-1">
+                                                    <i class="small material-icons left text-grey darken-4">room</i>
+                                                </h2>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a target='_blank' title="Ver Foto" class="text-grey darken-4 no-margin" href="http://10.193.0.97:8000/media/{{ d.photo }}">
+                                                <h2 class="center black-text darken-1">
+                                                    <i class="small material-icons left text-grey darken-4">photo</i>
+                                                </h2>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="no-margin row">
+    {% include "footer.html" %}
+</div>
+{% endblock %}

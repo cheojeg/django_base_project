@@ -1,0 +1,20 @@
+{% load staticfiles static %}
+
+<ul id="dropdown1" class="dropdown-content ul-options grey lighten-3">
+    <li><a class="black-text" href="{% url 'logout_user' %}">Cerrar Sesi&oacute;n</a></li>
+</ul>
+<nav class="blue-intense" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="{% url 'detection_list' %}" class="brand-logo white-text">
+            <img src="{% static 'images/full_logo_white.png' %}">
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a class="white-text" href="{% url 'register_agent' %}">Agentes</a></li>
+            <li><a class="white-text" href="{% url 'detection_list' %}">Detecciones</a></li>
+            <li><a class="white-text" href="{% url 'map' %}">Geolocalizaci&oacute;n</a></li>
+            <li>
+                <a class="white-text dropdown-button" href="#!" data-activates="dropdown1">{{ user.username }}<i class="material-icons right">arrow_drop_down</i></a>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,2 +1,4 @@
 *.pyc
-
+*.log
+log/info.log
+local_settings.py

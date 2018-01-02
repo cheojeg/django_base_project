@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+from django.contrib.messages import constants as messages
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,8 +27,16 @@ SECRET_KEY = 'xtjkyp@4(zlaphn57pr*-)pksk8z-*na0#n20#@*ue)vn83up^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+# message bootstrap and Django
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 
 # Application definition
 
@@ -37,8 +47,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
     'rest_framework',
+    'rest_framework.authtoken',
+    'corsheaders',
+    'widget_tweaks',
+    'core',
+    'agents',
+    'dgii',
+    'website',
+    'detection',
 ]
 
 MIDDLEWARE = [
@@ -49,14 +66,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'base_project.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,20 +94,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'base_project.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "trackcar",
-        "USER": "cheojeg",
-        "PASSWORD": "j9714697",
-        "HOST": "",
-        "PORT": "5432",
+try:
+    #print "Local Settings"
+    from .local_settings import *
+except Exception:
+    # Prod Settings
+    #print "Prod Settings"
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql_psycopg2",
+            "NAME": "trackcar",
+            "USER": "cheojeg",
+            "PASSWORD": "j9714697",
+            "HOST": "",
+            "PORT": "5432",
+        }
     }
-}
+
+    LOGGING_PATH = '/home/cheojeg/trackcar/django_base_project/log/info.log'
+
 
 # LOGGING
 LOGGING = {
@@ -99,7 +127,7 @@ LOGGING = {
         'file': {
             'level': 'INFO',
             'class': 'logging.FileHandler',
-            'filename': '/home/cheojeg/hackaton/base_project/log/info.log',
+            'filename': LOGGING_PATH,
             'formatter': 'verbose',
         },
     },
@@ -136,12 +164,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Django REST FRAMEWORK
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
 }
 
 # Internationalization
@@ -158,7 +189,21 @@ USE_L10N = True
 USE_TZ = True
 
 
+PROJECT_APP_PATH = os.path.dirname(os.path.abspath(__file__))
+PROJECT_APP = os.path.basename(PROJECT_APP_PATH)
+PROJECT_ROOT = BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+
+# It's to know where the files live in the operating system
+STATICFILES_DIRS = [os.path.join(BASE_DIR, './static/')]
+
+LOGIN_REDIRECT_URL = 'home'
+
+DATE_INPUT_FORMATS = ('%d-%m-%Y')

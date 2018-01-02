@@ -1,0 +1,115 @@
+{% load staticfiles static %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Sistema Automatizado de Detecci&oacute;n de Matr&iacute;culas en Regla</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- CSS  -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{% static 'css/jquery-ui.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{% static 'css/jquery.dataTables.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+        <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    </head>
+    <body>
+        {% block nav %}
+        {% endblock %}
+
+        <div class="row no-margin">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="container">
+                        <div class="col s12 no-padding">
+                            <div class="row margin-b-minus" id="alert_box">
+                                <div class="col s12 m12">
+                                {% if message.tags == "alert-danger" %}
+                                    <div class="card red darken-1">
+                                        <div class="row no-margin">
+                                            <div class="col s12 m10">
+                                                <div class="card-content padding-message white-text left">
+                                                    <i class="material-icons left">close</i>{{ message }}
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m2">
+                                                <i class="material-icons icon_style" id="alert_close" aria-hidden="true">close</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if message.tags == "alert-success" %}
+                                    <div class="card teal darken-1">
+                                        <div class="row no-margin">
+                                            <div class="col s12 m10">
+                                                <div class="card-content padding-message white-text left">
+                                                    <i class="material-icons left">check</i>{{ message }}
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m2">
+                                                <i class="material-icons icon_style" id="alert_close" aria-hidden="true">close</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if message.tags == "alert-info" %}
+                                    <div class="card blue darken-1">
+                                        <div class="row no-margin">
+                                            <div class="col s12 m10">
+                                                <div class="card-content padding-message white-text left">
+                                                    <i class="material-icons left">info</i>{{ message }}
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m2">
+                                                <i class="material-icons icon_style" id="alert_close" aria-hidden="true">close</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                {% if message.tags == "alert-warning" %}
+                                    <div class="card amber darken-1">
+                                        <div class="row no-margin">
+                                            <div class="col s12 m10">
+                                                <div class="card-content padding-message white-text left">
+                                                    <i class="material-icons left">warning</i>{{ message }}
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m2">
+                                                <i class="material-icons icon_style" id="alert_close" aria-hidden="true">close</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% block content %}
+            {% endblock %}
+        </div>
+
+        {% block footer %}
+        {% endblock %}
+        {% block pre_calls%}
+        {% endblock %}
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/materialize.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/init.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.mask.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+
+        {% block after_calls%}
+        {% endblock %}
+    </body>
+</html>

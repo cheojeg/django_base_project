@@ -8,7 +8,7 @@ Specify this project is web application to detect vehicles with overdue taxes th
 
 This project was developed using Django to show a web interface to manage of detection of vehicles and Django Rest Framework to provide some webservices to an Android mobile application that let to transit officials recognize the characters of the licences plates of vehicles to check the state of the payment of taxes.
 
-Developers:
+Developed by:
 - Franger Oriana Yanez Rivas
 - Manuel José Francisco Fuentes Graterol
-- José Eliseo García Infante (me)
+- [José Eliseo García Infante](https://www.linkedin.com/in/jegi89/) (me)

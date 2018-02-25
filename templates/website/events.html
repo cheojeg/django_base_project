@@ -31,7 +31,7 @@
                                         <th>A&ntilde;o</th>
                                         <th>Estado</th>
                                         <th>Sancionado</th>
-                                        <th>Lugar</th>
+                                        <!-- <th>Lugar</th> -->
                                         <th>Imagen</th>
                                     </tr>
                                 </thead>
@@ -47,19 +47,22 @@
                                         <td>{{ d.marbete_id.year_production }}</td>
                                         <td>{% if d.marbete_id.valid %} Valido {% else %} Vencido {% endif %}</td>
                                         <td>{% if d.marbete_id.penalized %} Sancionado {% else %} No Sancionado {% endif %}</td>
-                                        <td>
+                                        <!-- <td>
                                             <a title="Ubicar en el Mapa" class="text-grey darken-4 no-margin" href="{% url 'map' %}">
-                                                <h2 class="center black-text darken-1">
-                                                    <i class="small material-icons left text-grey darken-4">room</i>
+                                                <h2 class="center black-text darken-1 no-padding no-margin">
+                                                    <i class="small material-icons left text-grey darken-4 no-padding no-margin">room</i>
                                                 </h2>
                                             </a>
-                                        </td>
+                                        </td> -->
                                         <td>
-                                            <a target='_blank' title="Ver Foto" class="text-grey darken-4 no-margin" href="http://10.193.0.97:8000/media/{{ d.photo }}">
-                                                <h2 class="center black-text darken-1">
-                                                    <i class="small material-icons left text-grey darken-4">photo</i>
+                                            {% if d.marbete_id.valid %}
+                                            {% else %}
+                                            <a target='_blank' title="Ver Foto" class="text-grey darken-4 no-margin" href="http://127.0.0.1:8000/media/{{ d.photo }}">
+                                                <h2 class="center black-text darken-1 no-margin no-padding">
+                                                    <i class="small material-icons left text-grey darken-4 no-margin no-padding">photo</i>
                                                 </h2>
                                             </a>
+                                            {% endif %}
                                         </td>
                                     </tr>
                                     {% endfor %}

@@ -74,7 +74,8 @@ def map(request, agent_id=False):
 		d['fields']['time'] = detection[0].created.strftime("%d-%m-%Y %H:%M:%S")
 		d['fields']['agent'] = detection[0].agent_id.first_name + ' ' + detection[0].agent_id.last_name
 		d['fields']['agent_number'] = detection[0].agent_id.agent_number
-		d['fields']['capture_img'] = 'http://10.193.0.97:8000/media/' + str(detection[0].photo)
+		d['fields']['capture_img'] = 'http://127.0.0.1:8000/media/' + str(detection[0].photo)
+		d['fields']['identificacion'] = str(detection[0].id)
 	detections_json = js_parser.dumps(mod_dectections, ensure_ascii=False)
 	agents = Agent.objects.all()
 
